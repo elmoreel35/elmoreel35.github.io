@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嘉德拍卖会 - 权威艺术品拍卖与收藏指南</title>
+    <meta name="description" content="嘉德拍卖会官方网站，提供古董珍玩、中国书画、油画雕塑、珠宝钟表、邮品钱币、名酒紫砂等拍卖会信息、拍卖预览、拍卖结果及收藏指南服务。">
+    <meta name="keywords" content="嘉德拍卖会,中国嘉德,艺术品拍卖,古董拍卖,书画拍卖,拍卖结果,嘉德四季">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8B0000; /* 深红，象征传统与权威 */
+            --secondary-color: #C41E3A; /* 亮红，用于强调 */
+            --accent-gold: #D4AF37; /* 香槟金，用于点缀 */
+            --bg-color: #F9F9F9;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-color: #E0E0E0;
+            --white: #FFFFFF;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-top {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 12px;
+            padding: 8px 0;
+            text-align: center;
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            font-size: 14px;
+            font-weight: normal;
+            color: var(--text-light);
+            margin-left: 10px;
+            letter-spacing: 0;
+        }
+
+        .search-bar {
+            display: flex;
+            flex: 1;
+            max-width: 500px;
+            margin: 0 40px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background-image: url('https://picsum.photos/seed/artgallery/1920/600');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 16px;
+            border-radius: 2px;
+            font-weight: bold;
+            border: 1px solid var(--primary-color);
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 24px;
+            background-color: var(--primary-color);
+        }
+
+        .view-all {
+            font-size: 14px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .view-all:hover {
+            color: var(--primary-color);
+        }
+
+        /* Auction Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .category-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .category-count {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Current Auctions */
+        .auction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .auction-item {
+            display: flex;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .auction-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .auction-img {
+            width: 280px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .auction-info {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .auction-badge {
+            display: inline-block;
+            background-color: #FFF3E0;
+            color: #E65100;
+            padding: 4px 8px;
+            font-size: 12px;
+            border-radius: 2px;
+            width: fit-content;
+            margin-bottom: 10px;
+        }
+
+        .auction-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .auction-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .auction-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .lot-count {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .bid-btn {
+            background-color: var(--white);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 2px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .bid-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Results Table */
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .results-table th, .results-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .results-table th {
+            background-color: #F5F5F5;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .results-table tr:hover {
+            background-color: #FAFAFA;
+        }
+
+        .result-amount {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Guide Section */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .guide-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .guide-content p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+            text-align: justify;
+        }
+
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 15px;
+        }
+
+        .step-list li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2C2C2C;
+            color: #CCCCCC;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            color: var(--white);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-main {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                width: 100%;
+                margin: 0;
+            }
+
+            .nav-menu {
+                gap: 15px;
+                font-size: 14px;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+
+            .hero {
+                height: 350px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .auction-item {
+                flex-direction: column;
+            }
+            
+            .auction-img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            中国嘉德拍卖行 - 诚信为本，专业至上
+        </div>
+        <div class="container header-main">
+            <a href="#" class="logo">
+                中国嘉德 
+                <span>CANADIAN GALLERIES</span>
+            </a>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索拍卖会、艺术品、藏家...">
+                <button>搜索</button>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="active">拍卖会</a>
+                <a href="#">成交结果</a>
+                <a href="#">拍卖预览</a>
+                <a href="#">艺术教育</a>
+                <a href="#">关于我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">传承艺术，鉴藏未来</h1>
+                <p class="hero-subtitle">中国嘉德拍卖有限公司，致力于为全球收藏家提供最权威、最专业的艺术品拍卖服务。</p>
+                <a href="#" class="cta-button">浏览最新拍卖会</a>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="container">
+            <div class="section-header">
+                <h2 class="section-title">拍卖品类</h2>
+                <a href="#" class="view-all">查看全部品类 <span>&rarr;</span></a>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <div class="category-name">中国书画</div>
+                    <div class="category-count">近现代名家作品</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🏺</div>
+                    <div class="category-name">古董珍玩</div>
+                    <div class="category-count">瓷器、玉器、杂项</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💎</div>
+                    <div class="category-name">珠宝翡翠</div>
+                    <div class="category-count">彩宝、钻石、玉石</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">⏰</div>
+                    <div class="category-name">钟表</div>
+                    <div class="category-count">高端腕表、古董钟</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📮</div>
+                    <div class="category-name">邮品钱币</div>
+                    <div class="category-count">邮票、金银币、纸币</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍷</div>
+                    <div class="category-name">名酒紫砂</div>
+                    <div class="category-count">陈年名酒、紫砂壶</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🖼️</div>
+                    <div class="category-name">油画雕塑</div>
+                    <div class="category-count">现当代油画、雕塑</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎼</div>
+                    <div class="category-name">古籍善本</div>
+                    <div class="category-count">线装书、古籍修复</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Auctions Section -->
+        <section class="container">
+            <div class="section-header">
+                <h2 class="section-title">即将开幕</h2>
+                <a href="#" class="view-all">查看拍卖日历 <span>&rarr;</span></a>
+            </div>
+            <div class="auction-list">
+                <article class="auction-item">
+                    <img src="https://picsum.photos/seed/painting/600/400" alt="中国书画专场" class="auction-img">
+                    <div class="auction-info">
+                        <div>
+                            <span class="auction-badge">即将开拍</span>
+                            <h3 class="auction-title">中国书画·近现代名家夜场</h3>
+                            <div class="auction-meta">
+                                <span class="meta-item">📅 2023年11月15日</span>
+                                <span class="meta-item">📍 北京嘉德艺术中心</span>
+                                <span class="meta-item">🏷️ 估价待定</span>
+                            </div>
+                            <p style="color: #666; font-size: 14px;">汇聚林风眠、徐悲鸿、张大千等近现代艺术巨匠的珍贵作品，展现百年艺术史的辉煌篇章。</p>
+                        </div>
+                        <div class="auction-footer">
+                            <span class="lot-count">共 60 件拍品</span>
+                            <button class="bid-btn">立即出价</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="auction-item">
+                    <img src="https://picsum.photos/seed/porcelain/600/400" alt="古董珍玩专场" class="auction-img">
+                    <div class="auction-info">
+                        <div>
+                            <span class="auction-badge">即将开拍</span>
+                            <h3 class="auction-title">古董珍玩·明清瓷器专场</h3>
+                            <div class="auction-meta">
+                                <span class="meta-item">📅 2023年11月17日</span>
+                                <span class="meta-item">📍 北京嘉德艺术中心</span>
+                                <span class="meta-item">🏷️ 估价待定</span>
+                            </div>
+                            <p style="color: #666; font-size: 14px;">精选明清官窑及文人雅玩，含青花、粉彩、珐琅彩等精品，尽显皇家气派与文人意趣。</p>
+                        </div>
+                        <div class="auction-footer">
+                            <span class="lot-count">共 120 件拍品</span>
+                            <button class="bid-btn">立即出价</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="auction-item">
+                    <img src="https://picsum.photos/seed/jewelry/600/400" alt="珠宝翡翠专场" class="auction-img">
+                    <div class="auction-info">
+                        <div>
+                            <span class="auction-badge">即将开拍</span>
+                            <h3 class="auction-title">珠宝翡翠·璀璨人生专场</h3>
+                            <div class="auction-meta">
+                                <span class="meta-item">📅 2023年11月20日</span>
+                                <span class="meta-item">📍 北京嘉德艺术中心</span>
+                                <span class="meta-item">🏷️ 估价待定</span>
+                            </div>
+                            <p style="color: #666; font-size: 14px;">汇集世界顶级珠宝品牌及大师级翡翠，展现自然之美的极致与匠心独运的工艺。</p>
+                        </div>
+                        <div class="auction-footer">
+                            <span class="lot-count">共 40 件拍品</span>
+                            <button class="bid-btn">立即出价</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section class="container" style="background-color: #F0F0F0; border-radius: 8px; padding: 40px;">
+            <div class="section-header">
+                <h2 class="section-title">收藏指南</h2>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-content">
+                    <h3>如何参与嘉德拍卖会？</h3>
+                    <p>参与嘉德拍卖会不仅能获得心仪的艺术品，更是与全球藏家交流的绝佳机会。我们的服务流程严谨而透明，确保每一位客户的权益。</p>
+                    <ul class="step-list">
+                        <li>注册成为会员并完善账户信息</li>
+                        <li>浏览拍卖图录，选择感兴趣的项目</li>
+                        <li>设置出价策略，参与实时竞价</li>
+                        <li>竞拍成功后办理结算与提货手续</li>
+                    </ul>
+                </div>
+                <div class="guide-content">
+                    <h3>嘉德拍卖的优势</h3>
+                    <p>作为国内领先的拍卖行，中国嘉德拥有行业最资深的专业鉴定团队和最广泛的客户网络。</p>
+                    <ul class="step-list">
+                        <li><strong>专业鉴定：</strong>资深专家团队把关，确保拍品来源清晰、品质卓越。</li>
+                        <li><strong>透明公开：</strong>全程公开拍卖过程，确保竞价公平公正。</li>
+                        <li><strong>全球网络：</strong>覆盖海外的客户网络，助力艺术品全球化流通。</li>
+                        <li><strong>完善服务：</strong>提供专业的仓储、物流及保险服务。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="container">
+            <div class="section-header">
+                <h2 class="section-title">近期成交概览</h2>
+                <a href="#" class="view-all">查看完整结果 <span>&rarr;</span></a>
+            </div>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>拍品名称</th>
+                        <th>专场名称</th>
+                        <th>估价</th>
+                        <th>成交价</th>
+                        <th>成交率</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>齐白石《墨虾图》</td>
+                        <td>中国书画</td>
+                        <td>¥ 1,200 - 1,800万</td>
+                        <td class="result-amount">¥ 2,450万</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>清乾隆 御制珐琅彩杏林春燕碗</td>
+                        <td>古董珍玩</td>
+                        <td>¥ 6,000 - 8,000万</td>
+                        <td class="result-amount">¥ 9,200万</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>梵高《向日葵》系列版画</td>
+                        <td>油画雕塑</td>
+                        <td>¥ 300 - 500万</td>
+                        <td class="result-amount">¥ 680万</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>劳力士 Daytona 经典款</td>
+                        <td>钟表</td>
+                        <td>¥ 50 - 80万</td>
+                        <td class="result-amount">¥ 125万</td>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>中国嘉德</h2>
+                    <p>中国嘉德拍卖有限公司成立于1993年，总部位于北京。作为中国第一家上市拍卖行，嘉德始终秉持“诚信为本，专业至上”的宗旨，致力于推动中国艺术品市场的繁荣发展。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>拍卖服务</h4>
+                    <ul>
+                        <li><a href="#">拍卖会查询</a></li>
+                        <li><a href="#">拍卖图录</a></li>
+                        <li><a href="#">竞买指南</a></li>
+                        <li><a href="#">拍卖结果</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">新闻动态</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">官方微博</a></li>
+                        <li><a href="#">官方APP</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 中国嘉德拍卖有限公司 版权所有 | 京ICP备XXXXXXXX号 | 举报电话：010-XXXXXXXX</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
