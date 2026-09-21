@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="讯飞听见提供专业级智能语音转文字、会议录音转写、字幕生成及语言翻译服务。支持多语种识别、实时字幕及云端协作，助力企业降本增效。">
+    <meta name="keywords" content="讯飞听见,语音转文字,会议转写,实时字幕,智能语音识别">
+    <title>讯飞听见-专业智能语音转写与字幕生成平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #00c853; /* 讯飞绿 */
+            --primary-dark: #009624;
+            --secondary-color: #e0f2f1;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --bg-body: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        header {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 16px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary-color);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(0, 200, 83, 0.1);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* 核心场景 */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* 对比与优势 */
+        .comparison-section {
+            background: var(--bg-white);
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .comparison-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .comparison-text p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .comparison-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-icon {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .comparison-image {
+            background: #f1f3f5;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .comparison-image img {
+            border-radius: 4px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* 技术规格 */
+        .specs-section {
+            background: var(--text-main);
+            color: white;
+        }
+
+        .specs-section .section-title h2 {
+            color: white;
+        }
+
+        .specs-section .section-title p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .spec-item h4 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .spec-item p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            background: var(--bg-body);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-white);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 20px;
+            max-height: 200px;
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--bg-white);
+            padding: 60px 0 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            margin-top: 15px;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12" stroke="#00c853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 6V12L16 14" stroke="#00c853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>讯飞听见</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#features">核心功能</a>
+                <a href="#solutions">解决方案</a>
+                <a href="#specs">技术规格</a>
+                <a href="#faq">帮助中心</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">免费试用</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-tags">
+                    <span class="tag">实时字幕</span>
+                    <span class="tag">会议转写</span>
+                    <span class="tag">多语种识别</span>
+                </div>
+                <h1>智能语音转文字，<br>让沟通更高效</h1>
+                <p>基于科大讯飞30年语音识别技术，提供高准确率的语音转写服务。支持普通话、英语及多方言识别，一键生成会议纪要，轻松实现文档数字化。</p>
+                <div style="margin-top: 30px;">
+                    <a href="#" class="btn btn-primary" style="padding: 12px 30px; font-size: 16px;">立即开始</a>
+                    <a href="#" class="btn btn-outline" style="padding: 12px 30px; font-size: 16px;">观看演示</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>全方位的语音处理能力</h2>
+                    <p>满足会议记录、采访整理、课堂学习、字幕制作等多种场景需求</p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🎙️</div>
+                        <h3>会议录音转写</h3>
+                        <p>自动区分发言人，生成带人名和时间戳的逐字稿，支持导出Word/PDF格式。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">⏱️</div>
+                        <h3>实时字幕生成</h3>
+                        <p>直播或视频会议中实时显示字幕，支持同传功能，打破语言沟通障碍。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>多语种互译</h3>
+                        <p>支持中英互译及多国语言识别，一键生成双语对照文档，适合国际化会议。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">📑</div>
+                        <h3>智能文档整理</h3>
+                        <p>自动提炼会议重点，生成结构化的会议纪要摘要，提高复盘效率。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section id="solutions" class="section comparison-section">
+            <div class="container">
+                <div class="comparison-container">
+                    <div class="comparison-text">
+                        <h3>传统人工记录 vs 讯飞听见</h3>
+                        <p>告别繁琐的手动打字，利用人工智能技术将语音瞬间转化为文字，解放您的双手和大脑，专注于核心内容。</p>
+                        <ul class="comparison-list">
+                            <li><span class="check-icon">✔</span> 准确率高达98%以上</li>
+                            <li><span class="check-icon">✔</span> 支持20+种方言识别</li>
+                            <li><span class="check-icon">✔</span> 省时省力，成本降低90%</li>
+                            <li><span class="check-icon">✔</span> 支持云端/离线多种模式</li>
+                        </ul>
+                        <br>
+                        <a href="#" class="btn btn-primary">了解更多方案</a>
+                    </div>
+                    <div class="comparison-image">
+                        <img src="https://picsum.photos/seed/feishu/500/350" alt="语音转写界面演示">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Specs -->
+        <section id="specs" class="section specs-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>硬核技术指标</h2>
+                    <p>源自科大讯飞核心算法，持续行业领先</p>
+                </div>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <h4>98%+</h4>
+                        <p>识别准确率</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>50ms</h4>
+                        <p>首字延迟</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>20+</h4>
+                        <p>支持语种</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>24h</h4>
+                        <p>全天候服务</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="section faq-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>常见问题</h2>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item active">
+                        <div class="faq-question">识别准确率如何保证？</div>
+                        <div class="faq-answer">
+                            讯飞听见采用科大讯飞最新的语音识别引擎，经过海量数据训练。在普通话、英语及常见方言环境下，识别准确率通常可达到98%以上，对于专业术语和口音较重的语音，系统也具备一定的容错能力。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">支持哪些文件格式上传？</div>
+                        <div class="faq-answer">
+                            支持常见的音频格式，如MP3、WAV、M4A、AMR等，以及常见的视频格式如MP4、AVI。同时支持直接麦克风实时录入。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">转写后的文件可以编辑吗？</div>
+                        <div class="faq-answer">
+                            可以。转写完成后，用户可以在网页端对文字进行校对和修改，支持全文替换、标点修正等功能，确保最终文档的准确性。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">企业版和个人版有什么区别？</div>
+                        <div class="faq-answer">
+                            个人版主要满足个人日常学习、采访记录等需求；企业版则提供更长的转写时长、批量处理、专属API接口、定制化训练以及专属客户经理等服务。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12" stroke="#00c853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 6V12L16 14" stroke="#00c853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>讯飞听见</span>
+                    </a>
+                    <p>科大讯飞旗下智能语音转写平台，致力于为用户提供高效、准确的语音识别与文档处理服务，推动办公数字化变革。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品服务</h4>
+                    <ul>
+                        <li><a href="#">在线转写</a></li>
+                        <li><a href="#">实时字幕</a></li>
+                        <li><a href="#">语音转写API</a></li>
+                        <li><a href="#">字幕制作</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>解决方案</h4>
+                    <ul>
+                        <li><a href="#">企业会议</a></li>
+                        <li><a href="#">媒体采访</a></li>
+                        <li><a href="#">教育培训</a></li>
+                        <li><a href="#">法律取证</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">客服中心</a></li>
+                        <li><a href="#">商务合作</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 iFlytek Hearing. All rights reserved. 本页面为演示设计。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 交互逻辑
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentNode;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+  </html>
